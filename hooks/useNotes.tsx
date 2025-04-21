@@ -22,6 +22,16 @@ export const useNotes = (userId: String) => {
   });
 };
 
+export const fetchNoteById = async (id: string) => {
+  const { data, error } = await supabase
+    .from("notes")
+    .select("*")
+    .eq("id", id)
+    .single();
+  if (error) throw error;
+  return data;
+};
+
 export const useNotesById = (id: String) => {
   return useQuery({
     queryKey: ["note", id],

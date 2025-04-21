@@ -17,7 +17,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { useCreateNote, useNotesById, useUpdateNote } from "@/hooks/useNotes";
+import {
+  fetchNoteById,
+  useCreateNote,
+  useNotesById,
+  useUpdateNote,
+} from "@/hooks/useNotes";
 import { useChat } from "@ai-sdk/react";
 import {
   Sheet,
@@ -34,7 +39,7 @@ import FilteredMessage from "./filtered-message";
 import { Check, Loader, LoaderCircle, Send } from "lucide-react";
 import { formSchema } from "./form-schema";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import FetchNoteByID from "@/app/dashboard/[id]/page";
+import { useRouter } from "next/navigation";
 
 export default function CreateNoteForm({
   userId,
@@ -56,15 +61,11 @@ export default function CreateNoteForm({
   const [summary, setSummary] = useState("");
   const [prompt, setPrompt] = useState("");
   const [message, setMessage] = useState("");
-
+  const router = useRouter();
   const createNote = useCreateNote();
   const updateNote = useUpdateNote(noteId || "");
 
-  const { data, error, refetch } = useQuery({
-    queryKey: ["note", noteId],
-    queryFn: () => useNotesById(noteId || ""),
-    enabled: !!noteId,
-  });
+  const { data, error, refetch } = useNotesById(noteId || "");
 
   const {
     messages,
@@ -96,7 +97,6 @@ export default function CreateNoteForm({
           onSuccess: () => {
             toast.success("Note successfully updated");
             onSuccess();
-            refetch();
             queryClient.invalidateQueries({ queryKey: ["note", noteId] });
           },
           onError: () => {
@@ -237,23 +237,24 @@ export default function CreateNoteForm({
               <SheetHeader>
                 <SheetTitle>AI Generate Response</SheetTitle>
               </SheetHeader>
-              <SheetDescription className="mt-4">
-                <div className="border p-3 rounded-md">Prompt:- {prompt}</div>
-                <div className="text-muted-foreground text-sm flex items-center gap-2">
-                  {isLoading ? (
-                    <>
-                      Generating summary...
-                      <LoaderCircle className="animate-spin" />
-                    </>
-                  ) : (
-                    <>
-                      Summary generated
-                      <Check className="text-green-500" />
-                    </>
-                  )}
+              <SheetDescription className="mt-4" asChild>
+                <div>
+                  <div className="border p-3 rounded-md">Prompt:- {prompt}</div>
+                  <div className="text-muted-foreground text-sm flex items-center gap-2">
+                    {isLoading ? (
+                      <>
+                        Generating summary...
+                        <LoaderCircle className="animate-spin" />
+                      </>
+                    ) : (
+                      <>
+                        Summary generated
+                        <Check className="text-green-500" />
+                      </>
+                    )}
+                  </div>
+                  <FilteredMessage messages={messages} />
                 </div>
-
-                <FilteredMessage messages={messages} />
               </SheetDescription>
             </div>
 
@@ -287,15 +288,13 @@ export default function CreateNoteForm({
           </SheetContent>
         </Sheet>
         <Button type="submit">
-          <Button type="submit">
-            {(noteId ? updateNote.isPending : createNote.isPending)
-              ? noteId
-                ? "Updating..."
-                : "Creating..."
-              : noteId
-                ? "Update Note"
-                : "Create Note"}
-          </Button>
+          {(noteId ? updateNote.isPending : createNote.isPending)
+            ? noteId
+              ? "Updating..."
+              : "Creating..."
+            : noteId
+              ? "Update Note"
+              : "Create Note"}
         </Button>
 
         {/* </div> */}

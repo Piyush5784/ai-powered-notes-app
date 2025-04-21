@@ -18,8 +18,8 @@ export default async function ProtectedPage() {
   }
 
   return (
-    <div className="flex-1 w-full flex flex-col">
-      <div className="flex items-end w-full justify-end pl-10">
+    <div className="">
+      <div className="flex justify-end">
         <CreateNotesDialog userId={user.id} />
       </div>
       <DisplayNotes userId={user.id} />

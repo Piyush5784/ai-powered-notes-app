@@ -17,12 +17,11 @@ const FetchNoteByID = () => {
 
   if (!params.id) return null;
 
-  const { isPending, error, data: note } = useNotesById(params.id);
+  const { isPending, error, data: note, refetch } = useNotesById(params.id);
   const deleteNote = useDeleteNote(note?.id || "");
 
   const [open, setOpen] = useState(false);
 
-  // Handle delete
   function handleDeleteNote() {
     if (!note?.id) return;
 
@@ -30,6 +29,7 @@ const FetchNoteByID = () => {
       onSuccess: () => {
         toast.success("Note successfully deleted");
         setOpen(false); // Close the dialog on success
+        refetch();
       },
       onError: () => {
         toast.error("Failed to delete note");
@@ -38,7 +38,7 @@ const FetchNoteByID = () => {
   }
 
   return (
-    <div className="p-6 md:p-8 max-w-3xl mx-auto">
+    <div className="p-6 md:p-8 w-full mx-auto">
       {isPending ? (
         <Spinner size="large" />
       ) : error || !note ? (
@@ -47,7 +47,7 @@ const FetchNoteByID = () => {
         </div>
       ) : (
         <>
-          <div className="flex items-center justify-end gap-2 p-3">
+          <div className="flex items-center justify-end gap-2 p-3 h-full">
             <CreateNotesDialog
               userId={note.user_id}
               NoteId={note.id}
@@ -56,6 +56,7 @@ const FetchNoteByID = () => {
                 content: note.content,
                 summary: note.summary ? note.summary : "",
               }}
+              refetch={refetch}
             />
             <NoteDeleteDialog
               open={open}
@@ -63,7 +64,7 @@ const FetchNoteByID = () => {
               deleteFn={handleDeleteNote} // Pass delete function
             />
           </div>
-          <div className="bg-white dark:bg-zinc-900 border border-muted rounded-2xl shadow-md p-4 sm:p-6 md:p-8 max-w-3xl w-full mx-auto flex flex-col gap-4">
+          <div className="bg-white dark:bg-zinc-900 border border-muted rounded-2xl shadow-md p-4 sm:p-6 md:p-8 max-w-4xl w-full mx-auto flex flex-col gap-4">
             <Badge variant="outline" className="w-fit">
               Note ID: {note.id}
             </Badge>

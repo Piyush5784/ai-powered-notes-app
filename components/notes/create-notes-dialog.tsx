@@ -12,20 +12,26 @@ import { Button } from "../ui/button";
 import CreateNoteForm from "./create-notes-form";
 import { formSchema } from "./form-schema";
 import { z } from "zod";
+import { RefetchOptions, QueryObserverResult } from "@tanstack/react-query";
 
 const CreateNotesDialog = ({
   userId,
   defaultValues,
   NoteId,
+  refetch,
 }: {
   userId: string;
   defaultValues?: Partial<z.infer<typeof formSchema>>;
   NoteId?: string;
+  refetch?: (
+    options?: RefetchOptions
+  ) => Promise<QueryObserverResult<any, Error>>;
 }) => {
   const [open, setOpen] = useState(false);
 
   function onSuccess() {
     setOpen(false);
+    refetch && refetch();
   }
 
   return (
@@ -38,13 +44,13 @@ const CreateNotesDialog = ({
       <DialogContent className="w-full border">
         <DialogHeader>
           <DialogTitle>Create Note Form</DialogTitle>
-          <CreateNoteForm
-            userId={userId}
-            noteId={NoteId}
-            onSuccess={onSuccess}
-            defaultValues={defaultValues}
-          />
         </DialogHeader>
+        <CreateNoteForm
+          userId={userId}
+          noteId={NoteId}
+          onSuccess={onSuccess}
+          defaultValues={defaultValues}
+        />
       </DialogContent>
     </Dialog>
   );
