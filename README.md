@@ -52,4 +52,11 @@ VERCEL_URL=your-vercel-url
 
 ![image](https://github.com/user-attachments/assets/329cfd70-ed8a-4ae1-ba4c-9b7a28333454)
 
+## Database Table 
+
+![image](https://github.com/user-attachments/assets/c4565156-3265-4faa-ae0a-b9b691f5ca73)
+
+## Flow Diagram 
+
+![image](https://github.com/user-attachments/assets/f76e9c33-1274-4fe5-b0df-29e840695138)
 
