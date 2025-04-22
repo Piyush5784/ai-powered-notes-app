@@ -18,7 +18,18 @@ const defaultUrl = process.env.VERCEL_URL
 export const metadata = {
   metadataBase: new URL(defaultUrl),
   title: "AI Powered Notes App",
-  description: "A Simple Notes App with AI summazied feature",
+  description: "A Simple Notes App with AI summarized feature",
+  openGraph: {
+    title: "AI Powered Notes App",
+    description: "A Simple Notes App with AI summarized feature",
+    images: [`/image.png`],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Powered Notes App",
+    description: "A Simple Notes App with AI summarized feature",
+    images: [`/image.png`],
+  },
 };
 
 const geistSans = Geist({
