@@ -7,6 +7,8 @@ https://github.com/user-attachments/assets/03302c5d-1f45-4402-a291-0b2e6d90b921
 
 [Check out the deployed app on Vercel](https://ai-powered-notes-app-pied.vercel.app/)  
 
+## How I build this app step by step :- 
+[Pdf Link ](https://drive.google.com/file/d/1zN1SdJUmJdnGYHNr2H7M8r0DMYJx4WJE/view?usp=sharing)
 ---
 
 ## ✨ Features
