@@ -47,3 +47,9 @@ NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
 NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
 LLM_AI_KEY=your-llm-api-key
 VERCEL_URL=your-vercel-url
+```
+## Lighthouse Score
+
+![image](https://github.com/user-attachments/assets/329cfd70-ed8a-4ae1-ba4c-9b7a28333454)
+
+
