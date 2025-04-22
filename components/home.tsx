@@ -1,62 +1,58 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Sparkles, FileText, BrainCircuit } from "lucide-react";
+import {
+  Sparkles,
+  FileText,
+  BrainCircuit,
+  Star,
+  ArrowRight,
+  Zap,
+  Search,
+} from "lucide-react";
+import { Card, CardContent } from "./ui/card";
+import HeroSection, { FeatureCard } from "./header/hero-section";
+import FaqSection from "./header/faq-section";
+import TestimonialSection from "./header/testimonial-section";
+import FeatureSection from "./header/features-section";
 
 export default function HomePage() {
   return (
-    <section className="flex flex-col items-center justify-center text-center py-20 px-6 space-y-6">
-      <div className="space-y-4 max-w-2xl">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
-          Welcome to <span className="text-primary">AI Powered Notes App</span>
-        </h1>
-        <p className="text-muted-foreground text-lg">
-          Create, manage, and summarize your notes with the power of AI.
-        </p>
-        <div className="flex items-center justify-center gap-4 pt-4">
-          <Button size="lg" asChild>
-            <Link href="/dashboard">
-              <FileText className="w-4 h-4 mr-2" />
-              Go to Dashboard
-            </Link>
-          </Button>
+    <>
+      {" "}
+      <HeroSection />
+      <FeatureSection />
+      <TestimonialSection />
+      <FaqSection />
+      <section className="py-5">
+        <div className="container px-4 md:px-6">
+          <div className="flex flex-col items-center justify-center space-y-4 text-center">
+            <div className="space-y-2">
+              <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+                Ready to Transform Your Notes?
+              </h2>
+              <p className="max-w-[900px] text-gray-500 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+                Join thousands of users who have revolutionized their
+                note-taking experience with NoteGenius.
+              </p>
+            </div>
+            <div className="h-28 w-28 blur-[150px] bg-white absolute right-1/2"></div>
+
+            <div className="flex flex-col gap-2 min-[400px]:flex-row">
+              <Button size="lg" className="bg-gray-300" asChild>
+                <Link href={"/dashboard"}>
+                  Get Started for Free <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+            </div>
+            <p className="text-xs text-gray-500">No credit card required</p>
+          </div>
         </div>
-      </div>
+      </section>
+      <footer className="p-4 text-center text-sm border-t">
+        <p className="mb-2">Built with ❤️ by Your Name</p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-16 max-w-5xl w-full">
-        <FeatureCard
-          icon={<FileText className="w-6 h-6 text-primary" />}
-          title="Simple Note Management"
-          description="Create and organize your notes effortlessly. No clutter, just clarity."
-        />
-        <FeatureCard
-          icon={<BrainCircuit className="w-6 h-6 text-primary" />}
-          title="AI Summarization"
-          description="Let AI summarize long notes into concise takeaways with one click."
-        />
-        <FeatureCard
-          icon={<Sparkles className="w-6 h-6 text-primary" />}
-          title="Beautiful & Minimal UI"
-          description="Crafted with love using Tailwind CSS and shadcn/ui components."
-        />
-      </div>
-    </section>
-  );
-}
-
-function FeatureCard({
-  icon,
-  title,
-  description,
-}: {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="rounded-2xl border p-6 text-left shadow-sm hover:shadow-md transition">
-      <div className="mb-3">{icon}</div>
-      <h3 className="font-semibold text-lg mb-1">{title}</h3>
-      <p className="text-muted-foreground text-sm">{description}</p>
-    </div>
+        <p className="mt-4">© 2025 NotesApp</p>
+      </footer>
+    </>
   );
 }
