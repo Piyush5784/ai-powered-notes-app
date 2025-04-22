@@ -239,7 +239,10 @@ export default function CreateNoteForm({
               </SheetHeader>
               <SheetDescription className="mt-4" asChild>
                 <div>
-                  <div className="border p-3 rounded-md">Prompt:- {prompt}</div>
+                  <div className="border p-3 rounded-md">
+                    Title :- {form.getValues("title")} <br />
+                    Content :- {form.getValues("content")}
+                  </div>
                   <div className="text-muted-foreground text-sm flex items-center gap-2">
                     {isLoading ? (
                       <>
@@ -276,7 +279,7 @@ export default function CreateNoteForm({
                     <Send className="h-4 w-4 mr-1" /> Send
                   </Button>
                 ) : (
-                  <Button>Close</Button>
+                  <Button onClick={generateData}>Regenerate</Button>
                 )}
                 <SheetClose asChild>
                   <Button variant="outline" onClick={InsertText}>

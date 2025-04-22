@@ -42,8 +42,8 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <main className=" flex flex-col items-center h-screen w-full">
-              <div className="w-full max-w-5xl border h-screen">
+            <main className=" flex flex-col items-center  w-full">
+              <div className="w-full max-w-5xl border min-h-screen">
                 <nav className="w-full flex justify-center border-b border-b-foreground/10 h-16">
                   <div className="w-full max-w-5xl flex justify-between items-center p-3 px-5 text-sm">
                     <div className="flex gap-5 items-center font-semibold">
