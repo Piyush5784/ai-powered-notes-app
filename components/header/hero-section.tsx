@@ -20,7 +20,7 @@ const HeroSection = () => {
           <div className="flex items-center justify-center gap-4 pt-4">
             <Button size="lg" asChild>
               <Link href="/dashboard">
-                <FileText className="w-4 h-4 mr-2" />
+                <Sparkles className="w-4 h-4 mr-2" />
                 Try for free
               </Link>
             </Button>
