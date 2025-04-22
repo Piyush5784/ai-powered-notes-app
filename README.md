@@ -11,22 +11,19 @@ https://github.com/user-attachments/assets/03302c5d-1f45-4402-a291-0b2e6d90b921
 
 ## ✨ Features
 
-- 🔐 **User Authentication**
-  - Email & Password
-  - Google OAuth (via Supabase)
-- 📝 **Note Management**
-  - Create, edit, and delete notes
-- 🤖 **AI Summarization**
-  - Uses note title and content to generate concise summaries via DeepSeek/Groq/OpenAI
-- 🚀 **React Query**
-  - Handles data fetching, caching, and mutation
-- 🎨 **Shadcn UI**
-  - Polished, accessible components
-- ☁️ **Supabase Backend**
-  - Handles auth and data storage
-- 🌐 **Deployed on Vercel**
-  - GitHub connected for CI/CD
-
+-  **User Authentication**
+  Email & Password
+  Google OAuth (via Supabase)
+-  **Note Management**
+  Create, edit, and delete notes
+-  **AI Summarization**
+    Uses note title and content to generate concise summaries via DeepSeek/Groq/OpenAI
+-  **React Query**
+   Handles data fetching, caching, and mutation
+-  **Shadcn UI**
+   Polished, accessible components
+-  **Supabase Backend**
+   Handles auth and data storage
 ---
 
 ## 🛠️ Tech Stack
@@ -36,7 +33,7 @@ https://github.com/user-attachments/assets/03302c5d-1f45-4402-a291-0b2e6d90b921
 - **UI Components**: Shadcn, Radix UI, Lucide Icons
 - **State Management**: React Query (TanStack)
 - **Backend**: Supabase
-- **AI Integration**: DeepSeek / Claude / Groq / OpenAI
+- **AI Integration**: DeepSeek 
 - **Deployment**: Vercel
 
 ---
