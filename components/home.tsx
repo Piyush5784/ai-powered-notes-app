@@ -26,7 +26,7 @@ export default function HomePage() {
       <FaqSection />
       <JoinUsSection />
       <footer className="p-4 text-center text-sm border-t">
-        <p className="mb-2">Built with ❤️ by Your Name</p>
+        <p className="mb-2">Built with ❤️ by Piyush</p>
 
         <p className="mt-4">© 2025 NotesApp</p>
       </footer>
