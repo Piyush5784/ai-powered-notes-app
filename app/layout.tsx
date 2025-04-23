@@ -22,13 +22,13 @@ export const metadata = {
   openGraph: {
     title: "AI Powered Notes App",
     description: "A Simple Notes App with AI summarized feature",
-    images: [`/image.png`],
+    images: [`${defaultUrl}/image.png`],
   },
   twitter: {
     card: "summary_large_image",
     title: "AI Powered Notes App",
     description: "A Simple Notes App with AI summarized feature",
-    images: [`/image.png`],
+    images: [`${defaultUrl}/image.png`],
   },
 };
 
